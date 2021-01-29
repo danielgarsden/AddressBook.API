@@ -9,42 +9,42 @@ namespace AddressBook.API.Services
     public interface IAddressBookRepository
     {
         /// <summary>
-        /// Get All Address Book Entries
+        /// Get All Address Entries
         /// </summary>
-        /// <returns>IEnumerable of the AddressBook Entity</returns>
+        /// <returns>IEnumerable of the Address Entity</returns>
         IEnumerable<Address> GetAddresses();
 
         /// <summary>
-        /// Get one AddressBook Entry by the AddressBookId
+        /// Get one Address Entry by the Address Id
         /// </summary>
-        /// <param name="addressBookId"></param>
-        /// <returns>An AddressBook Entry</returns>
-        Address GetAddress(int addressBookId);
+        /// <param name="addressId"></param>
+        /// <returns>An Address Entry</returns>
+        Address GetAddress(int addressId);
 
         /// <summary>
-        /// Add an AddressBook Entry
+        /// Add an Address Entry
         /// </summary>
-        /// <param name="addressBook"></param>
-        void AddAddress(Address addressBook);
+        /// <param name="address"></param>
+        void AddAddress(Address address);
 
         /// <summary>
-        /// Add an AddressBook Entry
+        /// Add an Address Entry
         /// </summary>
-        /// <param name="addressBook"></param>
-        void DeleteAddress(Address addressBook);
+        /// <param name="address"></param>
+        void DeleteAddress(Address address);
 
         /// <summary>
-        /// Update an AddressBook Entry
+        /// Update an Address Entry
         /// </summary>
-        /// <param name="addressBook"></param>
-        void UpdateAddress(Address addressBook);
+        /// <param name="address"></param>
+        void UpdateAddress(Address address);
 
         /// <summary>
-        /// Check that an AddressBook Entry exists
+        /// Check that an Address Entry exists
         /// </summary>
-        /// <param name="addressBookId"></param>
+        /// <param name="addressId"></param>
         /// <returns>bool as to whether the address already exists</returns>
-        bool AddressExists(int addressBookId);
+        bool AddressExists(int addressId);
 
         /// <summary>
         /// Save the changes
