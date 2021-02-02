@@ -69,7 +69,7 @@ namespace AddressBook.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{addressId}", Name = "GetAddress")]
-        public ActionResult<IEnumerable<AddressDto>> GetAddress(int addressId)
+        public ActionResult<AddressDto> GetAddress(int addressId)
         {
             // get the specific address from repository
             Address addressesFromRepo = _addressBookRepository.GetAddress(addressId);
@@ -107,7 +107,7 @@ namespace AddressBook.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [Consumes("application/json")]
         [HttpPost]
-        public ActionResult CreateSubject(AddressForCreationDto address)
+        public ActionResult CreateAddress([FromBody]AddressForCreationDto address)
         {
             // check that dto we have been passed is valid, if not return bad request status code
             // and the associated validation faults

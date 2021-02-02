@@ -3,6 +3,8 @@ using AddressBook.API.Controllers;
 using AddressBook.API.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AddressBook.API.UnitTests
 {
@@ -111,7 +113,7 @@ namespace AddressBook.API.UnitTests
         }
 
         [Test]
-        public void Delete_SubjectReturnsNoContent()
+        public void Delete_ValidAddress_ReturnsNoContent()
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
@@ -124,6 +126,95 @@ namespace AddressBook.API.UnitTests
             Assert.IsInstanceOf<NoContentResult>(result);
         }
 
+        [Test]
+        public void Delete_InValidAddress_ReturnsNotFound()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
 
+            // Act
+            var result = addressController.DeleteAddress(12);
+
+            // Assert
+            Assert.IsInstanceOf<NotFoundResult>(result);
+        }
+
+        [Test]
+        public void Delete_ValidAddress_DeletesCorrectAddress()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            // Act
+            var deleteResult = addressController.DeleteAddress(2);
+            var getResult = addressController.GetAddresses().Result as OkObjectResult;
+            List<AddressDto> addresses = getResult.Value as List<AddressDto>;
+
+            // Assert
+            Assert.AreEqual(9, addresses.Count);
+        }
+
+        [Test]
+        public void CreateAddress_ValidAddress_ReturnsCreatedAtRouteResult()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            AddressForCreationDto address = new AddressForCreationDto
+            {
+                FirstName = "Hammett",
+                LastName = "Carter",
+                AddressLine1 = "721-3599 Cum St.",
+                AddressLine2 = "P.O. Box 384, 3935 Bibendum Av.",
+                AddressLine3 = "Ap #693-4430 Orci. Ave",
+                City = "Siheung",
+                PostCode = "10023",
+                LandLineNumber = "(016977) 7047",
+                MobileNumber = "0905 789 5305" 
+            };
+
+            // Act
+            SimulateValidation(address, addressController);
+            var result = addressController.CreateAddress(address);
+
+            // Assert
+            Assert.IsInstanceOf<CreatedAtRouteResult>(result);
+        }
+
+        [Test]
+        public void CreateAddress_InValidAddress_ReturnsBadRequestResult()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            // required fields are FirstName, LastName, 
+            AddressForCreationDto address = new AddressForCreationDto
+            {
+                FirstName = "Hammett",
+            };
+
+            // Act
+            SimulateValidation(address, addressController);
+            var result = addressController.CreateAddress(address);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+        }
+
+        private void SimulateValidation(object address, AddressController controller)
+        {
+            // mimic the behaviour of the model binder which is responsible for Validating the Model
+            var validationContext = new ValidationContext(address, null, null);
+            var validationResults = new List<ValidationResult>();
+            Validator.TryValidateObject(address, validationContext, validationResults, true);
+            foreach (var validationResult in validationResults)
+            {
+                controller.ModelState.AddModelError(validationResult.MemberNames.First(), validationResult.ErrorMessage);
+            }
+        }
     }
 }

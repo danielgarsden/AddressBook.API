@@ -12,6 +12,48 @@ namespace AddressBook.API.UnitTests
 
         private List<Address> _addresses;
 
+        public FakeAddressBookRepository()
+        {
+            InitialiseAddressList();
+        }
+
+        public void AddAddress(Address address)
+        {
+            address.AddressId = 12;
+            _addresses.Add(address);
+        }
+
+        public bool AddressExists(int addressId)
+        {
+            return _addresses.Any(a => a.AddressId == addressId);
+        }
+
+        public void DeleteAddress(Address address)
+        {
+            _addresses.Remove(address);
+        }
+
+        public Address GetAddress(int addressId)
+        {
+            return _addresses.Where(a => a.AddressId == addressId).FirstOrDefault();
+        }
+
+        public IEnumerable<Address> GetAddresses()
+        {
+            return _addresses;
+        }
+
+        public bool Save()
+        {
+            // No implementation
+            return true;
+        }
+
+        public void UpdateAddress(Address addressBook)
+        {
+            // no code implementation
+        }
+
         private void InitialiseAddressList()
         {
             _addresses = new List<Address>()
@@ -27,45 +69,7 @@ namespace AddressBook.API.UnitTests
                 new Address { AddressId = 9, FirstName = "Noah", LastName = "Hartman", AddressLine1 = "Ap #812-8930 Augue Avenue", AddressLine2 = "1066 Facilisis Street", AddressLine3 = "2597 Ac, Ave", City = "Geertruidenberg", PostCode = "72744-440", LandLineNumber = "07624466343", MobileNumber = "01771165803" },
                 new Address { AddressId = 10, FirstName = "Clarke", LastName = "Bryant", AddressLine1 = "104-2284 Mi St.", AddressLine2 = "Ap #853-8214 Feugiat Rd.", AddressLine3 = "P.O. Box 645, 7213 Tristique Rd.", City = "Limena", PostCode = "992804", LandLineNumber = "0800786717", MobileNumber = "070 4820 2574" }
             };
-                
-        }
-        public void AddAddress(Address addressBook)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool AddressExists(int addressId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteAddress(Address address)
-        {
-            _addresses.Remove(address);
-        }
-
-        public Address GetAddress(int addressId)
-        {
-            InitialiseAddressList();
-            return _addresses.Where(a => a.AddressId == addressId).FirstOrDefault();
-        }
-
-        public IEnumerable<Address> GetAddresses()
-        {
-            InitialiseAddressList();
-
-            return _addresses;
-        }
-
-        public bool Save()
-        {
-            // No implementation
-            return true;
-        }
-
-        public void UpdateAddress(Address addressBook)
-        {
-            throw new NotImplementedException();
         }
     }
 }
