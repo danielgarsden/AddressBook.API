@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AddressBook.API.Entities;
+using AddressBook.API.Models;
+using AddressBook.API.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AddressBook.API.Services;
-using AddressBook.API.Models;
-using AddressBook.API.Entities;
-using Microsoft.AspNetCore.Http;
 
 namespace AddressBook.API.Controllers
 {
@@ -107,7 +105,7 @@ namespace AddressBook.API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [Consumes("application/json")]
         [HttpPost]
-        public ActionResult CreateAddress([FromBody]AddressForCreationDto address)
+        public ActionResult CreateAddress([FromBody] AddressForCreationDto address)
         {
             // check that dto we have been passed is valid, if not return bad request status code
             // and the associated validation faults

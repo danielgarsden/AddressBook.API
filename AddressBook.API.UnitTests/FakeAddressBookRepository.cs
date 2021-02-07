@@ -1,9 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
-using AddressBook.API.Entities;
+﻿using AddressBook.API.Entities;
 using AddressBook.API.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AddressBook.API.UnitTests
 {

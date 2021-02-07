@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
-using AddressBook.API.Controllers;
+﻿using AddressBook.API.Controllers;
 using AddressBook.API.Models;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using NUnit.Framework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -172,8 +172,8 @@ namespace AddressBook.API.UnitTests
                 AddressLine3 = "Ap #693-4430 Orci. Ave",
                 City = "Siheung",
                 PostCode = "10023",
-                LandLineNumber = "(016977) 7047",
-                MobileNumber = "0905 789 5305" 
+                LandLineNumber = "0169777047",
+                MobileNumber = "09057895305"
             };
 
             // Act
@@ -205,7 +205,7 @@ namespace AddressBook.API.UnitTests
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
         }
 
-        private void SimulateValidation(object address, AddressController controller)
+        private static void SimulateValidation(object address, AddressController controller)
         {
             // mimic the behaviour of the model binder which is responsible for Validating the Model
             var validationContext = new ValidationContext(address, null, null);

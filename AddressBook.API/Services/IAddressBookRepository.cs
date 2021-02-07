@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using AddressBook.API.Entities;
+﻿using AddressBook.API.Entities;
+using System.Collections.Generic;
 
 namespace AddressBook.API.Services
 {

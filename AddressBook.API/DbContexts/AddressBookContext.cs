@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using AddressBook.API.Entities;
+﻿using AddressBook.API.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace AddressBook.API.DbContexts
 {
