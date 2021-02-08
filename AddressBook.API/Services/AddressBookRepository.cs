@@ -59,13 +59,6 @@ namespace AddressBook.API.Services
                 throw new ArgumentNullException(nameof(addressBook));
             }
 
-            DateTime testDateTime;
-
-            if (testDateTime == null)
-            {
-                Console.WriteLine(testDateTime);
-            }
-
             _context.AddressBooks.Remove(addressBook);
         }
 
