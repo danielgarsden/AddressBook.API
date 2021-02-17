@@ -24,5 +24,13 @@ pipeline
                 bat "dotnet clean AddressBook.API\\AddressBook.API.csproj"
             }
         }
+
+        stage ('Build')
+        {
+            steps
+            {
+                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release"
+            }
+        }
     }
 }
