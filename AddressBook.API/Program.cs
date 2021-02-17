@@ -10,14 +10,18 @@ namespace AddressBook.API
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+            IHost host = CreateHostBuilder(args).Build();
+
+            // add a delay here to wait for the SQL Server docker container to start up before we try
+            // to access it
+            System.Threading.Thread.Sleep(30000);
 
             // migrate the database for demo purposes
-            using (var scope = host.Services.CreateScope())
+            using (IServiceScope scope = host.Services.CreateScope())
             {
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<AddressBookContext>();
+                    AddressBookContext context = scope.ServiceProvider.GetService<AddressBookContext>();
                     context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
                 }
@@ -32,11 +36,13 @@ namespace AddressBook.API
             host.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                webBuilder.UseStartup<Startup>();
                 });
+        }
     }
 }
