@@ -36,10 +36,27 @@ namespace AddressBook.API
             // inform that the dependency injection controller that AddressBookRepository should be used where an implementation IAddressBookRepository is needed
             services.AddScoped<IAddressBookRepository, AddressBookRepository>();
 
+            // set up database connetion string
+            var server = Configuration["AddressBookDB:DBServer"] ?? "localhost";
+            var port = Configuration["AddressBookDB:DBPort"] ?? "";
+            var user = Configuration["AddressBookDB:DBUser"] ?? "User";
+            var password = Configuration["AddressBookDB:DBPassword"] ?? "password";
+            var database = Configuration["AddressBookDB:DBDatabase"] ?? "AddressBookDB";
+            var connectionString = "";
+
+            if (port == "")
+            {
+                connectionString = $"Server={server};Database={database};User={user};Password={password};";
+            }
+            else
+            { 
+                connectionString = $"Server={server},{port};Database={database};User={user};Password={password};";
+            }
+
             // configure Database
             services.AddDbContext<AddressBookContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("AddressBookDb"));
+                options.UseSqlServer(connectionString);
             });
 
             // configure Swagger for API documentation
