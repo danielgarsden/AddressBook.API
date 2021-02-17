@@ -6,8 +6,8 @@
         }
         
     stage('Restore packages'){
-   steps{
-      bat "dotnet restore Address.API\\Address.API.csproj"
+   	steps{
+      		bat "dotnet restore Address.API\\Address.API.csproj"
      }
   }
  }
