@@ -38,7 +38,7 @@ pipeline
             steps
             {
                 bat "dotnet test AddressBook.API.UnitTests\\AddressBook.API.UnitTests.csproj --no-build --logger:'trx;LogFilePath=output.xml'"
-		step([$class: 'MSTestPublisher', testResultsFile: 'output.xml', failOnError: true, keepLongStdio: true])
+		step([$class: 'MSTestPublisher', testResultsFile: 'AddressBook.API.UnitTests\\output.xml', failOnError: true, keepLongStdio: true])
             }
         }
 
