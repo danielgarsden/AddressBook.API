@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  localdev:
+    name: localdev
+
+services:
+  ms-sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+    container_name: addressbook_database
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "yourStrong(!)Password"
+      MSSQL_PID: "Express"
+    ports:
+      - "5050:1433"
+    networks:
+      - localdev
+  addressbookapi:
+    image: addressbookapi:0.8
+    container_name: addressbook_api
+    depends_on:
+      -  ms-sql-server
+    ports:
+      - "8081:80"
+    networks:
+      - localdev
+    environment:
+      DBServer: ms-sql-server
+      DBPort: 5050
+      DBUser: sa
+      DBPassword: yourStrong(!)Password
+      Database: AddressBookDB
+
+

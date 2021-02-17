@@ -1,0 +1,1 @@
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=passw0rd202!" -e "MSSQL_PID=Express" - p 5050:1433 -d mcr.micorsoft.com/mssql/server:2019-CU8-ubuntu-16.04
