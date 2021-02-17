@@ -48,5 +48,13 @@ pipeline
                 bat "dotnet publish AddressBook.API\\AddressBook.API.csproj"
             }
         }
+
+        stage ('Docker Build')
+        {
+            steps
+            {
+                bat "docker build -t addressbookapi:${env.BUILD_ID} ."
+            }
+        }
     }
 }
