@@ -38,6 +38,7 @@ pipeline
             steps
             {
                 bat "dotnet test AddressBook.API.UnitTests\\AddressBook.API.UnitTests.csproj --no-build --logger:'nunit;LogFilePath=output.xml'"
+		step([$class: 'MSTestPublisher', testResultsFile: 'output.xml', failOnError: true, keepLongStdio: true])
             }
         }
 
