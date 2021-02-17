@@ -13,7 +13,7 @@ pipeline
         {
             steps
             {
-                bat "dotnet restore Address.API\\Address.API.csproj"
+                bat "dotnet restore AddressBook.API\\AddressBook.API.csproj"
             }
         }
 
@@ -21,7 +21,7 @@ pipeline
         {
             steps
             {
-                bat "dotnet clean Address.API\\Address.API.csproj"
+                bat "dotnet clean AddressBook.API\\AddressBook.API.csproj"
             }
         }
     }
