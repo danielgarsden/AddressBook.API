@@ -40,5 +40,13 @@ pipeline
                 bat "dotnet test AddressBook.API.UnitTests\\AddressBook.API.UnitTests.csproj --no-build --logger:'nunit;LogFilePath=output.xml'"
             }
         }
+
+	stage ('Publish')
+        {
+            steps
+            {
+                bat "dotnet publish AddressBook.API\\AddressBook.API.csproj"
+            }
+        }
     }
 }
