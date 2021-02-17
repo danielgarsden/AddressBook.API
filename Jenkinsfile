@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage ('Restore packages'){
             steps {
-            bat "dotnet restore Address.API\\Address.API.csproj"
+            bat "dotnet restore AddressBook.API\\AddressBook.API.csproj"
        }
    }
  }
