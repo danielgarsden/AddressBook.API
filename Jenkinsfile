@@ -37,7 +37,7 @@ pipeline
         {
             steps
             {
-                bat "dotnet test AddressBook.API.UnitTests\\AddressBook.API.UnitTests.csproj -no-build --logger:"nunit;LogFilePath=output.xml"
+                bat "dotnet test AddressBook.API.UnitTests\\AddressBook.API.UnitTests.csproj -no-build --logger:'nunit;LogFilePath=output.xml'"
             }
         }
     }
