@@ -60,7 +60,7 @@ namespace AddressBook.API.Controllers
         }
 
         /// <summary>
-        /// Get a subject
+        /// Get an address
         /// </summary>
         /// <param name="addressId">The Id of the address to return</param>
         /// <returns>AddressDto</returns>
