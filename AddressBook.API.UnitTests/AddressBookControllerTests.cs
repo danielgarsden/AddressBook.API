@@ -148,7 +148,7 @@ namespace AddressBook.API.UnitTests
             AddressController addressController = new AddressController(fake);
 
             // Act
-            //var deleteResult = addressController.DeleteAddress(2);
+            var deleteResult = addressController.DeleteAddress(2);
             var getResult = addressController.GetAddresses().Result as OkObjectResult;
             List<AddressDto> addresses = getResult.Value as List<AddressDto>;
 
