@@ -35,6 +35,7 @@ namespace AddressBook.API
 
             // inform that the dependency injection controller that AddressBookRepository should be used where an implementation IAddressBookRepository is needed
             services.AddScoped<IAddressBookRepository, AddressBookRepository>();
+            services.AddApiVersioning(option => option.AssumeDefaultVersionWhenUnspecified = true); ;
 
             // set up database connetion string
             var server = Configuration["AddressBookDB:DBServer"] ?? "localhost";

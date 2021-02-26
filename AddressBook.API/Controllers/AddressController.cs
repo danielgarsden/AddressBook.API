@@ -11,6 +11,7 @@ namespace AddressBook.API.Controllers
     /// <summary>
     /// Controller for the Address Entity
     /// </summary>
+    [ApiVersion("1.0")]
     [ApiController]
     [Route("api/addresses")]
     [Produces("application/json")]
