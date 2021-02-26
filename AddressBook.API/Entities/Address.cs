@@ -74,5 +74,8 @@ namespace AddressBook.API.Entities
         /// </summary>
         [MaxLength(11)]
         public string MobileNumber { get; set; }
+
+        [MaxLength(50)]
+        public string County { get; set; }
     }
 }
