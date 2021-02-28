@@ -60,6 +60,42 @@ namespace AddressBook.API.Controllers
             return Ok(addressesToReturn);
         }
 
+            /// <summary>
+        /// Get All Subjects
+        /// </summary>
+        /// <returns>List of AddressDto</returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [HttpGet()]
+        public ActionResult<IEnumerable<AddressDto>> GetAddressesV2()
+        {
+            // get addresses from repository
+            IEnumerable<Address> addressesFromRepo = _addressBookRepository.GetAddresses();
+
+            // Create a dto to be used to return data
+            List<AddressDto> addressesToReturn = new List<AddressDto>();
+
+            // Loop through address from repoository and add to the return dto
+            foreach (Address address in addressesFromRepo)
+            {
+                addressesToReturn.Add(new AddressDto
+                {
+                    AddressId = address.AddressId,
+                    FirstName = address.FirstName,
+                    LastName = address.LastName,
+                    AddressLine1 = address.AddressLine1,
+                    AddressLine2 = address.AddressLine2,
+                    AddressLine3 = address.AddressLine3,
+                    City = address.City,
+                    PostCode = address.PostCode,
+                    LandLineNumber = address.LandLineNumber,
+                    MobileNumber = address.MobileNumber
+                });
+            }
+
+            // return OK status code and dto
+            return Ok(addressesToReturn);
+        }
+
         /// <summary>
         /// Get an address
         /// </summary>

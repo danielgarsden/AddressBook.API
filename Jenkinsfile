@@ -2,6 +2,11 @@ pipeline
 {
     agent any
 
+    environment
+    {
+        dotnet = 'c:\\Program Files (x86)\\dotnet\\'
+    }
+
     stages
     {
         stage ('Restore packages')
@@ -24,11 +29,11 @@ pipeline
         {
             steps
             {
-                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release /p:BuildNumber=${env.BUILD_ID}"
+                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release :p/Buildnumber=${env.BUILD_ID}"
             }
         }
 
-	stage ('UnitTest')
+	    stage ('UnitTest')
         {
             steps
             {
@@ -36,7 +41,7 @@ pipeline
             }
         }
 
-	stage ('Publish')
+	    stage ('Publish')
         {
             steps
             {

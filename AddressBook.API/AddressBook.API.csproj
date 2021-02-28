@@ -6,6 +6,8 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
+    <VersionPrefix>1.1.0.$(BuildNumber)</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
