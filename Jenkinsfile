@@ -29,7 +29,7 @@ pipeline
         {
             steps
             {
-                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release"
+                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release /p:BuildNumber=${env.BUILD_ID}"
             }
         }
 
