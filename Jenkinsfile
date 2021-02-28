@@ -29,11 +29,11 @@ pipeline
         {
             steps
             {
-                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release :p/Buildnumber=${env.BUILD_ID}"
+                bat "dotnet build AddressBook.API\\AddressBook.API.csproj --configuration Release"
             }
         }
 
-	    stage ('UnitTest')
+	stage ('UnitTest')
         {
             steps
             {
@@ -41,7 +41,7 @@ pipeline
             }
         }
 
-	    stage ('Publish')
+	stage ('Publish')
         {
             steps
             {
