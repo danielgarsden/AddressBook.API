@@ -20,6 +20,7 @@ WORKDIR "/src/AddressBook.API.UnitTests"
 RUN dotnet test "AddressBook.API.UnitTests.csproj"
 
 FROM build AS publish
+WORKDIR "/src/AddressBook.API"
 RUN dotnet publish "AddressBook.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
