@@ -11,10 +11,12 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["AddressBook.API/AddressBook.API.csproj", "AddressBook.API/"]
+COPY ["AddressBook.API.UnitTests/AddressBook.API.UnitTests.csproj", "AddressBook.API.UnitTests/"]
 RUN dotnet restore "AddressBook.API/AddressBook.API.csproj"
 COPY . .
 WORKDIR "/src/AddressBook.API"
 RUN dotnet build "AddressBook.API.csproj" -c Release -o /app/build
+RUN dotnet tests "AddressBook.API.UnitTests.csproj"
 
 FROM build AS publish
 RUN dotnet publish "AddressBook.API.csproj" -c Release -o /app/publish
