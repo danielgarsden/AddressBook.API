@@ -16,6 +16,7 @@ RUN dotnet restore "AddressBook.API/AddressBook.API.csproj"
 COPY . .
 WORKDIR "/src/AddressBook.API"
 RUN dotnet build "AddressBook.API.csproj" -c Release -o /app/build
+WORKDIR "/src/AddressBook.API.UnitTests"
 RUN dotnet test "AddressBook.API.UnitTests.csproj"
 
 FROM build AS publish
