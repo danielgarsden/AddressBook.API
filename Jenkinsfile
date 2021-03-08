@@ -14,7 +14,7 @@ pipeline
         {
             steps
             {
-                dotnet --list-sdks
+                sh "dotnet --list-sdks"
             }
         }
     }
