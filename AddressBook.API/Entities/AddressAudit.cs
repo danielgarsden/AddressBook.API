@@ -81,7 +81,7 @@ namespace AddressBook.API.Entities
 
         public DateTime AddressToBeSent { get; set; }
 
-        public bool AddressToBeDeleted { get; set; }
+        public bool Deleted { get; set; }
 
         public DateTime AddressSentAt { get; set; }
 

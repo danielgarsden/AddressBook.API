@@ -80,5 +80,7 @@ namespace AddressBook.API.Entities
         public string County { get; set; }
 
         public virtual List<AddressAudit> AddressAudit { get; set; } = new List<AddressAudit>();
+
+        public bool Deleted { get; set; }
     }
 }

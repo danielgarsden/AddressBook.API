@@ -4,6 +4,7 @@ using AddressBook.API.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AddressBook.API.Migrations
 {
     [DbContext(typeof(AddressBookContext))]
-    partial class AddressBookContextModelSnapshot : ModelSnapshot
+    [Migration("20211229210649_DeletedColumnAddedToAddressBook")]
+    partial class DeletedColumnAddedToAddressBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,6 +142,9 @@ namespace AddressBook.API.Migrations
                     b.Property<DateTime>("AddressSentAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("AddressToBeDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("AddressToBeSent")
                         .HasColumnType("datetime2");
 
@@ -151,9 +156,6 @@ namespace AddressBook.API.Migrations
                     b.Property<string>("County")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()

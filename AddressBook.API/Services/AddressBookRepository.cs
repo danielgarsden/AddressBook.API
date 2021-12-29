@@ -34,7 +34,7 @@ namespace AddressBook.API.Services
                 throw new ArgumentNullException(nameof(addressBook));
             }
 
-            AddressAudit audit = MapAddressToAddressAudit(addressBook,false);
+            AddressAudit audit = MapAddressToAddressAudit(addressBook);
             addressBook.AddressAudit.Add(audit);
             _context.AddressBooks.Add(addressBook);
         }
@@ -47,7 +47,7 @@ namespace AddressBook.API.Services
         /// <returns>bool as to whether the address already exists</returns>
         public bool AddressExists(int addressId)
         {
-            return _context.AddressBooks.Any(a => a.AddressId == addressId);
+            return _context.AddressBooks.Where(a => a.Deleted == false).Any(a => a.AddressId == addressId);
         }
 
         /// <summary>
@@ -61,9 +61,10 @@ namespace AddressBook.API.Services
                 throw new ArgumentNullException(nameof(addressBook));
             }
 
-            AddressAudit audit = MapAddressToAddressAudit(addressBook, true);
+            addressBook.Deleted = true;
+
+            AddressAudit audit = MapAddressToAddressAudit(addressBook);
             addressBook.AddressAudit.Add(audit);
-            _context.AddressBooks.Remove(addressBook);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace AddressBook.API.Services
         /// <returns>An AddressBook entity</returns>
         public Address GetAddress(int addressId)
         {
-            return _context.AddressBooks.FirstOrDefault(a => a.AddressId == addressId);
+            return _context.AddressBooks.Where(a => a.Deleted == false).FirstOrDefault(a => a.AddressId == addressId);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace AddressBook.API.Services
         /// <returns>IEnumerable of AddressBook Entities</returns>
         public IEnumerable<Address> GetAddresses()
         {
-            return _context.AddressBooks.ToList<Address>();
+            return _context.AddressBooks.ToList<Address>().Where(a => a.Deleted == false);
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace AddressBook.API.Services
         /// <param name="addressBook">The AddressBook Entity to update</param>
         public void UpdateAddress(Address addressBook)
         {
-            AddressAudit audit = MapAddressToAddressAudit(addressBook, false);
+            AddressAudit audit = MapAddressToAddressAudit(addressBook);
             addressBook.AddressAudit.Add(audit);
         }
 
@@ -110,7 +111,7 @@ namespace AddressBook.API.Services
         /// <param name="address"></param>
         /// <param name="delete"></param>
         /// <returns></returns>
-        private static AddressAudit MapAddressToAddressAudit(Address address, bool delete)
+        private static AddressAudit MapAddressToAddressAudit(Address address)
         {
             AddressAudit audit = new AddressAudit();
 
@@ -126,7 +127,7 @@ namespace AddressBook.API.Services
             audit.MobileNumber = address.MobileNumber;
             audit.County = address.County;
             audit.AddressToBeSent = DateTime.Now;
-            audit.AddressToBeDeleted = delete;
+            audit.Deleted = address.Deleted;
 
             return audit;
         }
