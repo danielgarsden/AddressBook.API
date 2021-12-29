@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace AddressBook.API.Entities
 {
-
-    /// <summary>
-    /// Address Book entity containing all the properties of an AddressBook entry
-    /// </summary>
-    public class Address
+    public class AddressAudit
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int AddressAuditId { get; set; }
+
         /// <summary>
         /// The Id of a specific Address Book record
         /// </summary>
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AddressId { get; set; }
+
+        [ForeignKey("AddressId")]
+        public Address Address { get; set; }
 
         /// <summary>
         /// The first name of the Address Book entry
@@ -79,6 +79,11 @@ namespace AddressBook.API.Entities
         [MaxLength(50)]
         public string County { get; set; }
 
-        public virtual List<AddressAudit> AddressAudit { get; set; } = new List<AddressAudit>();
+        public DateTime AddressToBeSent { get; set; }
+
+        public bool AddressToBeDeleted { get; set; }
+
+        public DateTime AddressSentAt { get; set; }
+
     }
 }

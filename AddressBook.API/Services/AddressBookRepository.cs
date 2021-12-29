@@ -34,6 +34,8 @@ namespace AddressBook.API.Services
                 throw new ArgumentNullException(nameof(addressBook));
             }
 
+            AddressAudit audit = MapAddressToAddressAudit(addressBook,false);
+            addressBook.AddressAudit.Add(audit);
             _context.AddressBooks.Add(addressBook);
         }
 
@@ -59,6 +61,8 @@ namespace AddressBook.API.Services
                 throw new ArgumentNullException(nameof(addressBook));
             }
 
+            AddressAudit audit = MapAddressToAddressAudit(addressBook, true);
+            addressBook.AddressAudit.Add(audit);
             _context.AddressBooks.Remove(addressBook);
         }
 
@@ -96,8 +100,35 @@ namespace AddressBook.API.Services
         /// <param name="addressBook">The AddressBook Entity to update</param>
         public void UpdateAddress(Address addressBook)
         {
-            // no code implementation here
+            AddressAudit audit = MapAddressToAddressAudit(addressBook, false);
+            addressBook.AddressAudit.Add(audit);
         }
 
+        /// <summary>
+        /// Create an AddressBookAudit entity from an AddressBook entity
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="delete"></param>
+        /// <returns></returns>
+        private static AddressAudit MapAddressToAddressAudit(Address address, bool delete)
+        {
+            AddressAudit audit = new AddressAudit();
+
+
+            audit.FirstName = address.FirstName;
+            audit.LastName = address.LastName;
+            audit.AddressLine1 = address.AddressLine1;
+            audit.AddressLine2 = address.AddressLine2;
+            audit.AddressLine3 = address.AddressLine3;
+            audit.City = address.City;
+            audit.PostCode = address.PostCode;
+            audit.LandLineNumber = address.LandLineNumber;
+            audit.MobileNumber = address.MobileNumber;
+            audit.County = address.County;
+            audit.AddressToBeSent = DateTime.Now;
+            audit.AddressToBeDeleted = delete;
+
+            return audit;
+        }
     }
 }

@@ -12,9 +12,16 @@ namespace AddressBook.API.DbContexts
 
         public DbSet<Address> AddressBooks { get; set; }
 
+        public DbSet<AddressAudit> AddressBooksAudit { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Address>().HasData(
+            modelBuilder.Entity<Address>()
+                .HasMany(a => a.AddressAudit)
+                .WithOne(a => a.Address);
+
+            modelBuilder.Entity<Address>()
+                .HasData(
                 new Address()
                 {
                     AddressId = 1,
