@@ -1,5 +1,6 @@
 ﻿using AddressBook.API.DbContexts;
 using AddressBook.API.Entities;
+using AddressBook.API.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace AddressBook.API.Services
                 throw new ArgumentNullException(nameof(addressBook));
             }
 
-            AddressAudit audit = MapAddressToAddressAudit(addressBook);
+            AddressAudit audit = Mapper.MapAddressToAddressAudit(addressBook);
             addressBook.AddressAudit.Add(audit);
             _context.AddressBooks.Add(addressBook);
         }
@@ -63,7 +64,7 @@ namespace AddressBook.API.Services
 
             addressBook.Deleted = true;
 
-            AddressAudit audit = MapAddressToAddressAudit(addressBook);
+            AddressAudit audit = Mapper.MapAddressToAddressAudit(addressBook);
             addressBook.AddressAudit.Add(audit);
         }
 
@@ -101,35 +102,8 @@ namespace AddressBook.API.Services
         /// <param name="addressBook">The AddressBook Entity to update</param>
         public void UpdateAddress(Address addressBook)
         {
-            AddressAudit audit = MapAddressToAddressAudit(addressBook);
+            AddressAudit audit = Mapper.MapAddressToAddressAudit(addressBook);
             addressBook.AddressAudit.Add(audit);
-        }
-
-        /// <summary>
-        /// Create an AddressBookAudit entity from an AddressBook entity
-        /// </summary>
-        /// <param name="address"></param>
-        /// <param name="delete"></param>
-        /// <returns></returns>
-        private static AddressAudit MapAddressToAddressAudit(Address address)
-        {
-            AddressAudit audit = new AddressAudit();
-
-
-            audit.FirstName = address.FirstName;
-            audit.LastName = address.LastName;
-            audit.AddressLine1 = address.AddressLine1;
-            audit.AddressLine2 = address.AddressLine2;
-            audit.AddressLine3 = address.AddressLine3;
-            audit.City = address.City;
-            audit.PostCode = address.PostCode;
-            audit.LandLineNumber = address.LandLineNumber;
-            audit.MobileNumber = address.MobileNumber;
-            audit.County = address.County;
-            audit.AddressToBeSent = DateTime.Now;
-            audit.Deleted = address.Deleted;
-
-            return audit;
         }
     }
 }
