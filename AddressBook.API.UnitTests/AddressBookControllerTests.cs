@@ -75,7 +75,7 @@ namespace AddressBook.API.UnitTests
         }
 
         [Test]
-        public void GetAddress_InValidAddress_ReturnsNotFoundResult()
+        public void GetAddress_UnknownAddress_ReturnsNotFoundResult()
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
@@ -127,7 +127,7 @@ namespace AddressBook.API.UnitTests
         }
 
         [Test]
-        public void Delete_InValidAddress_ReturnsNotFound()
+        public void Delete_UnknownAddress_ReturnsNotFound()
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
@@ -200,6 +200,129 @@ namespace AddressBook.API.UnitTests
             // Act
             SimulateValidation(address, addressController);
             var result = addressController.CreateAddress(address);
+
+            // Assert
+            Assert.IsInstanceOf<BadRequestObjectResult>(result);
+        }
+
+        [Test]
+        public void CreateAddress_ValidAddress_AddsAddress()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            AddressForCreationDto address = new AddressForCreationDto
+            {
+                FirstName = "Hammett",
+                LastName = "Carter",
+                AddressLine1 = "721-3599 Cum St.",
+                AddressLine2 = "P.O. Box 384, 3935 Bibendum Av.",
+                AddressLine3 = "Ap #693-4430 Orci. Ave",          
+                City = "Siheung",
+                PostCode = "10023",
+                LandLineNumber = "0169777047",
+                MobileNumber = "09057895305"
+            };
+
+            // Act
+            SimulateValidation(address, addressController);
+            var result = addressController.CreateAddress(address);
+            var getAddressesResult = addressController.GetAddresses().Result as OkObjectResult;
+            List<AddressDto> addresses = getAddressesResult.Value as List<AddressDto>;
+            var getSingleAddressResult = addressController.GetAddress(12).Result as OkObjectResult;
+            AddressDto singleaddress = getSingleAddressResult.Value as AddressDto; 
+
+            // Assert
+            Assert.AreEqual(11, addresses.Count);
+            Assert.AreEqual(12, singleaddress.AddressId);
+            Assert.AreEqual("Hammett", singleaddress.FirstName);
+            Assert.AreEqual("Carter", singleaddress.LastName);
+            Assert.AreEqual("721-3599 Cum St.", singleaddress.AddressLine1);
+            Assert.AreEqual("P.O. Box 384, 3935 Bibendum Av.", singleaddress.AddressLine2);
+            Assert.AreEqual("Ap #693-4430 Orci. Ave", singleaddress.AddressLine3);
+            Assert.AreEqual("Siheung", singleaddress.City);
+            Assert.AreEqual("10023", singleaddress.PostCode);
+            Assert.AreEqual("0169777047", singleaddress.LandLineNumber);
+            Assert.AreEqual("09057895305", singleaddress.MobileNumber);
+
+        }
+
+        [Test]
+        public void UpdateAddress_ValidAddress_ReturnsNoContent()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            AddressDto address = new AddressDto
+            {
+                AddressId = 1,
+                FirstName = "Hammett",
+                LastName = "Carter",
+                AddressLine1 = "721-3599 Cum St.",
+                AddressLine2 = "P.O. Box 384, 3935 Bibendum Av.",
+                AddressLine3 = "Ap #693-4430 Orci. Ave",
+                City = "Siheung",
+                PostCode = "10023",
+                LandLineNumber = "0169777047",
+                MobileNumber = "09057895305"
+            };
+
+            // Act
+            SimulateValidation(address, addressController);
+            var result = addressController.UpdateAddress(1, address);
+
+            // Assert
+            Assert.IsInstanceOf<NoContentResult>(result);
+        }
+
+        [Test]
+        public void UpdateAddress_UnknownAddress_ReturnsNotFound()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            AddressDto address = new AddressDto
+            {
+                AddressId = 20,
+                FirstName = "Hammett",
+                LastName = "Carter",
+                AddressLine1 = "721-3599 Cum St.",
+                AddressLine2 = "P.O. Box 384, 3935 Bibendum Av.",
+                AddressLine3 = "Ap #693-4430 Orci. Ave",
+                City = "Siheung",
+                PostCode = "10023",
+                LandLineNumber = "0169777047",
+                MobileNumber = "09057895305"
+            };
+
+            // Act
+            SimulateValidation(address, addressController);
+            var result = addressController.UpdateAddress(20, address);
+
+            // Assert
+            Assert.IsInstanceOf<NotFoundResult>(result);
+        }
+
+        [Test]
+        public void UpdateAddress_InValidAddress_BadRequestResult()
+        {
+            // Arrange
+            FakeAddressBookRepository fake = new FakeAddressBookRepository();
+            AddressController addressController = new AddressController(fake);
+
+            AddressDto address = new AddressDto
+            {
+                AddressId = 1,
+                FirstName = "Hammett",
+                LastName = "Carter"
+            };
+
+            // Act
+            SimulateValidation(address, addressController);
+            var result = addressController.UpdateAddress(1, address);
 
             // Assert
             Assert.IsInstanceOf<BadRequestObjectResult>(result);
