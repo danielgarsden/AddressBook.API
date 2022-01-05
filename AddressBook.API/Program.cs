@@ -1,4 +1,4 @@
-using AddressBook.API.DbContexts;
+using AddressBook.Data.DbContexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,7 +14,7 @@ namespace AddressBook.API
 
             // add a delay here to wait for the SQL Server docker container to start up before we try
             // to access it
-            System.Threading.Thread.Sleep(30000);
+            //System.Threading.Thread.Sleep(30000);
 
             // migrate the database for demo purposes
             using (IServiceScope scope = host.Services.CreateScope())

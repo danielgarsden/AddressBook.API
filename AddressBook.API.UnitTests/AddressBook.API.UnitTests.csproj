@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AddressBook.API\AddressBook.API.csproj" />
+    <ProjectReference Include="..\AddressBook.Data\AddressBook.Data.csproj" />
   </ItemGroup>
 
 </Project>

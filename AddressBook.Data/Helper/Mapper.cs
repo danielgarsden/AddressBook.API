@@ -1,7 +1,7 @@
 ﻿using System;
-using AddressBook.API.Entities;
+using AddressBook.Data.Entities;
 
-namespace AddressBook.API.Helper
+namespace AddressBook.Data.Helper
 {
     public static class Mapper
     {

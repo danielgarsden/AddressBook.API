@@ -1,7 +1,7 @@
-﻿using AddressBook.API.Entities;
+﻿using AddressBook.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace AddressBook.API.DbContexts
+namespace AddressBook.Data.DbContexts
 {
     public class AddressBookContext : DbContext
     {
@@ -34,6 +34,7 @@ namespace AddressBook.API.DbContexts
                     PostCode = "BL7 9XD",
                     LandLineNumber = "01204123456",
                     MobileNumber = "07123456789",
+                    County = "Lancashire"
                 },
                 new Address()
                 {
@@ -46,7 +47,8 @@ namespace AddressBook.API.DbContexts
                     City = "Bolton",
                     PostCode = "BL7 9XD",
                     LandLineNumber = "01204123456",
-                    MobileNumber = "07123456789"
+                    MobileNumber = "07123456789",
+                    County = "Lancashire"
                 }
                 );
 
@@ -65,6 +67,7 @@ namespace AddressBook.API.DbContexts
                     PostCode = "BL7 9XD",
                     LandLineNumber = "01204123456",
                     MobileNumber = "07123456789",
+                    County = "Lancashire"
                 },
                 new AddressAudit()
                 {
@@ -78,7 +81,8 @@ namespace AddressBook.API.DbContexts
                     City = "Bolton",
                     PostCode = "BL7 9XD",
                     LandLineNumber = "01204123456",
-                    MobileNumber = "07123456789"
+                    MobileNumber = "07123456789",
+                    County = "Lancashire"
                 }
                 );
 

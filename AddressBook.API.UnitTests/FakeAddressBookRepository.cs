@@ -1,6 +1,6 @@
-﻿using AddressBook.API.Entities;
-using AddressBook.API.Services;
-using AddressBook.API.Helper;
+﻿using AddressBook.Data.Entities;
+using AddressBook.Data.Services;
+using AddressBook.Data.Helper;
 using System.Collections.Generic;
 using System.Linq;
 

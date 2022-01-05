@@ -1,7 +1,7 @@
-﻿using AddressBook.API.Entities;
+﻿using AddressBook.Data.Entities;
 using System.Collections.Generic;
 
-namespace AddressBook.API.Services
+namespace AddressBook.Data.Services
 {
     /// <summary>
     /// Interface for AddressBook Repository

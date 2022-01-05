@@ -1,11 +1,11 @@
-﻿using AddressBook.API.DbContexts;
-using AddressBook.API.Entities;
-using AddressBook.API.Helper;
+﻿using AddressBook.Data.DbContexts;
+using AddressBook.Data.Entities;
+using AddressBook.Data.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AddressBook.API.Services
+namespace AddressBook.Data.Services
 {
     /// <summary>
     /// Repository for AddressBook records

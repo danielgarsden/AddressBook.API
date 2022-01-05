@@ -1,6 +1,6 @@
-﻿using AddressBook.API.Entities;
+﻿using AddressBook.Data.Entities;
 using AddressBook.API.Models;
-using AddressBook.API.Services;
+using AddressBook.Data.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

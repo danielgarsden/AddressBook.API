@@ -1,5 +1,5 @@
-using AddressBook.API.DbContexts;
-using AddressBook.API.Services;
+using AddressBook.Data.DbContexts;
+using AddressBook.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
