@@ -5,6 +5,8 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace AddressBook.API.UnitTests
 {
@@ -20,7 +22,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.GetAddresses();
@@ -35,7 +39,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.GetAddresses().Result as OkObjectResult;
@@ -50,7 +56,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.GetAddresses().Result as OkObjectResult;
@@ -65,7 +73,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.GetAddress(1);
@@ -79,7 +89,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.GetAddress(11);
@@ -93,7 +105,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.GetAddress(7).Result as OkObjectResult;
@@ -117,7 +131,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.DeleteAddress(2);
@@ -131,7 +147,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var result = addressController.DeleteAddress(12);
@@ -145,7 +163,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // Act
             var deleteResult = addressController.DeleteAddress(2);
@@ -161,7 +181,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             AddressForCreationDto address = new AddressForCreationDto
             {
@@ -189,7 +211,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             // required fields are FirstName, LastName, 
             AddressForCreationDto address = new AddressForCreationDto
@@ -210,7 +234,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             AddressForCreationDto address = new AddressForCreationDto
             {
@@ -253,7 +279,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             AddressDto address = new AddressDto
             {
@@ -282,7 +310,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             AddressDto address = new AddressDto
             {
@@ -311,7 +341,9 @@ namespace AddressBook.API.UnitTests
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
-            AddressController addressController = new AddressController(fake);
+            using var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+            var logger = loggerFactory.CreateLogger<AddressController>();
+            AddressController addressController = new AddressController(fake, logger);
 
             AddressDto address = new AddressDto
             {

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace AddressBook.API.Controllers
 {
@@ -19,9 +20,12 @@ namespace AddressBook.API.Controllers
     {
         private readonly IAddressBookRepository _addressBookRepository;
 
-        public AddressController(IAddressBookRepository addressBookRepository)
+        private readonly ILogger<AddressController> _logger;
+
+        public AddressController(IAddressBookRepository addressBookRepository, ILogger<AddressController> logger)
         {
             _addressBookRepository = addressBookRepository ?? throw new ArgumentNullException(nameof(addressBookRepository));
+            _logger = logger;
         }
 
         /// <summary>
@@ -32,8 +36,12 @@ namespace AddressBook.API.Controllers
         [HttpGet()]
         public ActionResult<IEnumerable<AddressDto>> GetAddresses()
         {
+            _logger.LogInformation("Entered Get Addresses Method.");
+
             // get addresses from repository
             IEnumerable<Address> addressesFromRepo = _addressBookRepository.GetAddresses();
+
+            _logger.LogInformation("Retrieved Addresses from the database.");
 
             // Create a dto to be used to return data
             List<AddressDto> addressesToReturn = new List<AddressDto>();
@@ -55,6 +63,8 @@ namespace AddressBook.API.Controllers
                     MobileNumber = address.MobileNumber
                 });
             }
+
+            _logger.LogInformation("Addresses retrieved are {@addressesToReturn}.", addressesToReturn);
 
             // return OK status code and dto
             return Ok(addressesToReturn);
@@ -106,8 +116,12 @@ namespace AddressBook.API.Controllers
         [HttpGet("{addressId}", Name = "GetAddress")]
         public ActionResult<AddressDto> GetAddress(int addressId)
         {
+            _logger.LogInformation("Entered Get Address Method.");
+
             // get the specific address from repository
             Address addressesFromRepo = _addressBookRepository.GetAddress(addressId);
+
+            _logger.LogInformation("Retrieved Address from the database.");
 
             // if no matching addresses are found then return NotFound status code
             if (addressesFromRepo == null)
@@ -130,6 +144,8 @@ namespace AddressBook.API.Controllers
                 MobileNumber = addressesFromRepo.MobileNumber
             };
 
+            _logger.LogInformation("Address retrieved are {@addressToReturn}.", addressToReturn);
+
             // return OK status code and dto
             return Ok(addressToReturn);
         }
@@ -144,10 +160,15 @@ namespace AddressBook.API.Controllers
         [HttpPost]
         public ActionResult CreateAddress([FromBody] AddressForCreationDto address)
         {
+            _logger.LogInformation("Entered Create Address Method.");
+
+            _logger.LogInformation("Model state is {@ModelState}.", ModelState);
+
             // check that dto we have been passed is valid, if not return bad request status code
             // and the associated validation faults
             if (!ModelState.IsValid)
             {
+                _logger.LogInformation("Bad Model State.");
                 return BadRequest(ModelState);
             }
 
@@ -165,9 +186,13 @@ namespace AddressBook.API.Controllers
                 MobileNumber = address.MobileNumber
             };
 
+            _logger.LogInformation("About to save address to DB {@addresToCreate}", addressToCreate);
+
             // add address to repository and save
             _addressBookRepository.AddAddress(addressToCreate);
             _addressBookRepository.Save();
+
+            _logger.LogInformation("Address saved to DB.");
 
             // map the created entity to a dto to be returned
             AddressDto addressToReturn = new AddressDto
@@ -198,6 +223,8 @@ namespace AddressBook.API.Controllers
         [HttpDelete("{addressId}")]
         public ActionResult DeleteAddress(int addressId)
         {
+            _logger.LogInformation("Entered Delete Address Method.");
+
             // get the specific address from repository
             Address addressFromRepo = _addressBookRepository.GetAddress(addressId);
 
@@ -207,9 +234,13 @@ namespace AddressBook.API.Controllers
                 return NotFound();
             }
 
+            _logger.LogInformation("About to save address to DB {@addressFromRepo}", addressFromRepo);
+
             // delete address from repository and save
             _addressBookRepository.DeleteAddress(addressFromRepo);
             _addressBookRepository.Save();
+
+            _logger.LogInformation("Address Deleted.");
 
             // return success status code of type NoContent
             return NoContent();
@@ -227,10 +258,15 @@ namespace AddressBook.API.Controllers
         [HttpPut("{addressId}")]
         public ActionResult UpdateAddress(int addressId, AddressDto address)
         {
+            _logger.LogInformation("Entered Update Address Method.");
+
+            _logger.LogInformation("Model state is {@ModelState}.", ModelState);
+
             // check that dto we have been passed is valid, if not return bad request status code
             // and the associated validation faults
             if (!ModelState.IsValid)
             {
+                _logger.LogInformation("Bad request.");
                 return BadRequest(ModelState);
             }
 
@@ -240,6 +276,7 @@ namespace AddressBook.API.Controllers
             // if no matching addresses are found then return NotFound status code
             if (addressFromRepo == null)
             {
+                _logger.LogInformation("Address To Update Not Found.");
                 return NotFound();
             }
 
@@ -254,9 +291,13 @@ namespace AddressBook.API.Controllers
             addressFromRepo.LandLineNumber = address.LandLineNumber;
             addressFromRepo.MobileNumber = address.MobileNumber;
 
+            _logger.LogInformation("About to save address to DB {@addressFromRepo}", addressFromRepo);
+
             // update address in repository and save
             _addressBookRepository.UpdateAddress(addressFromRepo);
             _addressBookRepository.Save();
+
+            _logger.LogInformation("Address Updated.");
 
             // return success status code of type NoContent
             return NoContent();
