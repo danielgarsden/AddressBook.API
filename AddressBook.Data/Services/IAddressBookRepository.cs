@@ -9,7 +9,7 @@ namespace AddressBook.Data.Services
     public interface IAddressBookRepository
     {
         /// <summary>
-        /// Get All Address Entries
+        /// Get All Addresses
         /// </summary>
         /// <returns>IEnumerable of the Address Entity</returns>
         IEnumerable<Address> GetAddresses();

@@ -37,7 +37,7 @@ namespace AddressBook.API
             services.AddScoped<IAddressBookRepository, AddressBookRepository>();
             services.AddApiVersioning(option => option.AssumeDefaultVersionWhenUnspecified = true); ;
 
-            // set up database connetion string
+            // set up database connection string
             var server = Configuration["AddressBookDB:DBServer"] ?? "localhost";
             var port = Configuration["AddressBookDB:DBPort"] ?? "";
             var user = Configuration["AddressBookDB:DBUser"] ?? "User";

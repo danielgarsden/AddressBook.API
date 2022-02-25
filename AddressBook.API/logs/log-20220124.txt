@@ -1,0 +1,26 @@
+2022-01-24 20:51:27.408 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-24 20:51:27.439 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-24 20:51:27.452 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-24 20:51:27.453 +00:00 [INF] Hosting environment: Development
+2022-01-24 20:51:27.454 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-24 20:53:10.229 +00:00 [INF] Entered Get Addresses Method.
+2022-01-24 20:53:10.670 +00:00 [INF] Retrieved Addresses from the database.
+2022-01-24 20:53:10.679 +00:00 [INF] Addresses retrieved are [{"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":2,"FirstName":"Zita","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":3,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}].
+2022-01-24 20:53:26.780 +00:00 [INF] Entered Get Address Method.
+2022-01-24 20:53:26.902 +00:00 [INF] Retrieved Address from the database.
+2022-01-24 20:53:26.907 +00:00 [INF] Address retrieved are {"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}.
+2022-01-24 20:53:43.416 +00:00 [INF] Entered Create Address Method.
+2022-01-24 20:53:43.417 +00:00 [INF] Model state is [].
+2022-01-24 20:53:43.418 +00:00 [INF] About to save address to DB {"AddressId":0,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","County":null,"AddressAudit":[],"Deleted":false,"$type":"Address"}
+2022-01-24 20:53:43.577 +00:00 [INF] Address saved to DB.
+2022-01-24 20:55:52.541 +00:00 [INF] Entered Delete Address Method.
+2022-01-24 20:55:52.551 +00:00 [INF] About to save address to DB {"AddressId":3,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","County":null,"AddressAudit":[],"Deleted":false,"$type":"Address"}
+2022-01-24 20:55:52.580 +00:00 [INF] Address Deleted.
+2022-01-24 20:56:23.927 +00:00 [INF] Entered Create Address Method.
+2022-01-24 20:56:23.931 +00:00 [INF] Model state is [].
+2022-01-24 20:56:24.045 +00:00 [INF] About to save address to DB {"AddressId":0,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","County":null,"AddressAudit":[],"Deleted":false,"$type":"Address"}
+2022-01-24 20:56:24.063 +00:00 [INF] Address saved to DB.
+2022-01-24 20:56:27.166 +00:00 [INF] Entered Update Address Method.
+2022-01-24 20:56:27.168 +00:00 [INF] Model state is [{"Key":"addressId","Value":{"ChildNodes":null,"Children":null,"Key":"addressId","SubKey":{"Buffer":"addressId","Offset":0,"Length":9,"Value":"addressId","HasValue":true,"$type":"StringSegment"},"IsContainerNode":false,"RawValue":"4","AttemptedValue":"4","Errors":[],"ValidationState":"Valid","$type":"ModelStateNode"},"$type":"KeyValuePair`2"}].
+2022-01-24 20:56:27.189 +00:00 [INF] About to save address to DB {"AddressId":4,"FirstName":"Tamas","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","County":null,"AddressAudit":[],"Deleted":false,"$type":"Address"}
+2022-01-24 20:56:27.208 +00:00 [INF] Address Updated.

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AddressBook.API.Models
+namespace AddressBook.Shared.Models
 {
-    public class AddressDtoV2
+    public class AddressDto
     {
         /// <summary>
         /// The Id of a specific Address Book record
@@ -68,8 +68,5 @@ namespace AddressBook.API.Models
         /// </summary>
         [MaxLength(11)]
         public string MobileNumber { get; set; }
-
-        [MaxLength(50)]
-        public string County { get; set; }
     }
 }

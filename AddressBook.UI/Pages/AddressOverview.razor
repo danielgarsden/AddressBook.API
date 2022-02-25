@@ -1,0 +1,38 @@
+﻿@page "/addressoverview"
+
+<h1 class="page-title">All Addresses</h1>
+
+@if(Addresses == null)
+{
+    <p><em>Loading ...</em></p>   
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Address ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var address in Addresses)
+            {
+                <tr>
+                    <td></td>
+                    <td>@address.AddressId</td>
+                    <td>@address.FirstName</td>
+                    <td>@address.LastName</td>
+                    <td>
+                        <a href="@($"AddressDetails/{address.AddressId}")" class="btn btn-primary table-btn">
+                            Detail
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

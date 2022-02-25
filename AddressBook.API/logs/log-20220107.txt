@@ -1,0 +1,31 @@
+2022-01-07 06:36:37.196 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-07 06:36:37.233 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-07 06:36:37.243 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-07 06:36:37.244 +00:00 [INF] Hosting environment: Development
+2022-01-07 06:36:37.244 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-07 06:37:40.552 +00:00 [INF] Entered Get Addresses Method.
+2022-01-07 06:37:40.905 +00:00 [INF] Retrieved Addresses from the database.
+2022-01-07 06:37:40.914 +00:00 [INF] Addresses retreived are [{"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":2,"FirstName":"Zita","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}].
+2022-01-07 06:38:35.802 +00:00 [INF] Entered Get Address Method.
+2022-01-07 06:38:35.940 +00:00 [INF] Retrieved Address from the database.
+2022-01-07 06:38:35.941 +00:00 [INF] Addresses retreived are {"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}.
+2022-01-07 06:39:01.495 +00:00 [INF] Entered Create Address Method.
+2022-01-07 06:39:01.498 +00:00 [INF] Model state is [].
+2022-01-07 06:39:01.499 +00:00 [INF] About to save address to DB {"AddressId":0,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","County":null,"AddressAudit":[],"Deleted":false,"$type":"Address"}
+2022-01-07 06:39:01.664 +00:00 [INF] Address saved to DB.
+2022-01-07 06:48:47.558 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-07 06:48:47.583 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-07 06:48:47.590 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-07 06:48:47.591 +00:00 [INF] Hosting environment: Development
+2022-01-07 06:48:47.592 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-07 06:48:53.787 +00:00 [INF] Entered Get Addresses Method.
+2022-01-07 06:48:54.006 +00:00 [INF] Retrieved Addresses from the database.
+2022-01-07 06:48:54.015 +00:00 [INF] Addresses retreived are [{"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":2,"FirstName":"Zita","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":3,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}].
+2022-01-07 06:49:47.883 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-07 06:49:47.924 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-07 06:49:47.929 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-07 06:49:47.930 +00:00 [INF] Hosting environment: Development
+2022-01-07 06:49:47.931 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-07 06:50:01.964 +00:00 [INF] Entered Get Addresses Method.
+2022-01-07 06:50:02.303 +00:00 [INF] Retrieved Addresses from the database.
+2022-01-07 06:50:02.317 +00:00 [INF] Addresses retreived are [{"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":2,"FirstName":"Zita","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":3,"FirstName":"Alma","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}].

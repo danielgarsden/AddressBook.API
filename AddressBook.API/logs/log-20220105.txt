@@ -1,0 +1,25 @@
+2022-01-05 22:10:44.465 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-05 22:10:44.488 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-05 22:10:44.493 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-05 22:10:44.496 +00:00 [INF] Hosting environment: Development
+2022-01-05 22:10:44.497 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-05 22:10:54.801 +00:00 [INF] Enterd Get Addresses Method.
+2022-01-05 22:12:12.376 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-05 22:12:12.396 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-05 22:12:12.406 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-05 22:12:12.407 +00:00 [INF] Hosting environment: Development
+2022-01-05 22:12:12.408 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-05 22:12:29.020 +00:00 [INF] Enterd Get Addresses Method.
+2022-01-05 22:14:34.053 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-05 22:14:34.076 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-05 22:14:34.083 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-05 22:14:34.084 +00:00 [INF] Hosting environment: Development
+2022-01-05 22:14:34.085 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API
+2022-01-05 22:14:39.114 +00:00 [INF] Entered Get Addresses Method.
+2022-01-05 22:14:39.313 +00:00 [INF] Retrieved Addresses from the database.
+2022-01-05 22:14:39.322 +00:00 [INF] Addresses retreived are [{"AddressId":1,"FirstName":"Daniel","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"},{"AddressId":2,"FirstName":"Zita","LastName":"Garsden","AddressLine1":"13 Pinnacle Drive","AddressLine2":"Egerton","AddressLine3":"Bla","City":"Bolton","PostCode":"BL7 9XD","LandLineNumber":"01204123456","MobileNumber":"07123456789","$type":"AddressDto"}].
+2022-01-05 22:16:07.727 +00:00 [INF] Now listening on: https://localhost:5001
+2022-01-05 22:16:07.764 +00:00 [INF] Now listening on: http://localhost:5000
+2022-01-05 22:16:07.773 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-05 22:16:07.773 +00:00 [INF] Hosting environment: Development
+2022-01-05 22:16:07.773 +00:00 [INF] Content root path: C:\Projects\AddressBook\AddressBook.API

@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AddressBook.Data\AddressBook.Data.csproj" />
+    <ProjectReference Include="..\AddressBook.Shared\AddressBook.Shared.csproj" />
   </ItemGroup>
 
 </Project>

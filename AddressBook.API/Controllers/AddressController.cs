@@ -1,5 +1,5 @@
 ﻿using AddressBook.Data.Entities;
-using AddressBook.API.Models;
+using AddressBook.Shared.Models;
 using AddressBook.Data.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -116,7 +116,7 @@ namespace AddressBook.API.Controllers
         [HttpGet("{addressId}", Name = "GetAddress")]
         public ActionResult<AddressDto> GetAddress(int addressId)
         {
-            _logger.LogInformation("Entered Get Address Method.");
+            _logger.LogInformation("Entered Get Address Method. With an address ID of " + addressId.ToString());
 
             // get the specific address from repository
             Address addressesFromRepo = _addressBookRepository.GetAddress(addressId);
@@ -209,6 +209,8 @@ namespace AddressBook.API.Controllers
                 MobileNumber = addressToCreate.MobileNumber
             };
 
+            _logger.LogInformation("Address saved to DB {@addressToReturn}", addressToReturn);
+
             // return created status code and the details of what was created
             return CreatedAtRoute("GetAddress", new { addressToReturn.AddressId }, addressToReturn);
         }
@@ -223,14 +225,17 @@ namespace AddressBook.API.Controllers
         [HttpDelete("{addressId}")]
         public ActionResult DeleteAddress(int addressId)
         {
-            _logger.LogInformation("Entered Delete Address Method.");
+            _logger.LogInformation("Entered Delete Address Method.  With an address ID of " + addressId.ToString());
 
             // get the specific address from repository
             Address addressFromRepo = _addressBookRepository.GetAddress(addressId);
 
+            _logger.LogInformation("Retrieved Address from the database.");
+
             // if no matching addresses are found then return NotFound status code
             if (addressFromRepo == null)
             {
+                _logger.LogInformation("No matching address was found.");
                 return NotFound();
             }
 

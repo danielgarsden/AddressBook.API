@@ -1,15 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AddressBook.API.Models
+namespace AddressBook.Shared.Models
 {
-    public class AddressDto
+    public class AddressForCreationDto
     {
-        /// <summary>
-        /// The Id of a specific Address Book record
-        /// </summary>
-        [Required]
-        public int AddressId { get; set; }
-
         /// <summary>
         /// The first name of the Address Book entry
         /// </summary>

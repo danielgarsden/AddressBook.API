@@ -79,11 +79,11 @@ namespace AddressBook.Data.Entities
         [MaxLength(50)]
         public string? County { get; set; }
 
-        public DateTime AddressToBeSent { get; set; }
+        public DateTime? AddressToBeSent { get; set; }
 
         public bool Deleted { get; set; }
 
-        public DateTime AddressSentAt { get; set; }
+        public DateTime? AddressSentAt { get; set; }
 
     }
 }

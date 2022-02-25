@@ -1,5 +1,5 @@
 ﻿using AddressBook.API.Controllers;
-using AddressBook.API.Models;
+using AddressBook.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -102,6 +102,7 @@ namespace AddressBook.API.UnitTests
 
         [Test]
         public void GetAddress_ReturnsCorrectAddress()
+
         {
             // Arrange
             FakeAddressBookRepository fake = new FakeAddressBookRepository();
