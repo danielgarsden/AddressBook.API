@@ -28,6 +28,14 @@ variable "replica_instance_count" {
   type = map(number)
 }
 
+variable "user_name" {
+  type = string
+}
+
+variable "password" {
+  type = string
+}
+
 variable "company" {
   type        = string
   description = "Company name for resource tagging"
