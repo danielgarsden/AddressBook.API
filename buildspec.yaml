@@ -16,7 +16,13 @@ phases:
       - dotnet build AddressBook.sln
       - echo Test started on `date`
       - dotnet test AddressBook.sln
+
+  post_build:
+    commands:
+      - echo Publish started on `date`
+      # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/dotnet-linux-platform-bundle-app.html
+      - dotnet publish -c Release AddressBook.API/AddressBook.API.csproj
       
 artifacts:
   files:
-    - ./**/*
+    - ./AddressBook.API/bin/Release/net6.0/publish/*
