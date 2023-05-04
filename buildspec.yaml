@@ -25,4 +25,4 @@ phases:
       
 artifacts:
   files:
-    - ./AddressBook.API/bin/Release/net6.0/publish/*
+    - AddressBook.API/bin/Release/net6.0/publish/*
