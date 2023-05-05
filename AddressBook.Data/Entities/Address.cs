@@ -22,62 +22,62 @@ namespace AddressBook.Data.Entities
         /// </summary>
         [Required]
         [MaxLength(50)]
-        public string? FirstName { get; set; }
+        public string FirstName { get; set; }
 
         /// <summary>
         /// The last name of the Address Book entry
         /// </summary>
         [Required]
         [MaxLength(50)]
-        public string? LastName { get; set; }
+        public string LastName { get; set; }
 
         /// <summary>
         /// The first Address Line of the Address Book entry
         /// </summary>
         [Required]
         [MaxLength(100)]
-        public string? AddressLine1 { get; set; }
+        public string AddressLine1 { get; set; }
 
         /// <summary>
         /// The second Address Line of the Address Book entry
         /// </summary>
         [MaxLength(100)]
-        public string? AddressLine2 { get; set; }
+        public string AddressLine2 { get; set; }
 
         /// <summary>
         /// The third Address Line of the Address Book entry
         /// </summary>
         [MaxLength(100)]
-        public string? AddressLine3 { get; set; }
+        public string AddressLine3 { get; set; }
 
         /// <summary>
         /// The city of the Address Book entry
         /// </summary>
         [Required]
         [MaxLength(50)]
-        public string? City { get; set; }
+        public string City { get; set; }
 
         /// <summary>
         /// The post code of the Address Book entry
         /// </summary>
         [Required]
         [MaxLength(10)]
-        public string? PostCode { get; set; }
+        public string PostCode { get; set; }
 
         /// <summary>
         /// The Land line phonenumber of the Address Book entry
         /// </summary>
         [MaxLength(11)]
-        public string? LandLineNumber { get; set; }
+        public string LandLineNumber { get; set; }
 
         /// <summary>
         /// The mobile phone number of the Address Book entry
         /// </summary>
         [MaxLength(11)]
-        public string? MobileNumber { get; set; }
+        public string MobileNumber { get; set; }
 
         [MaxLength(50)]
-        public string? County { get; set; }
+        public string County { get; set; }
 
         public virtual List<AddressAudit> AddressAudit { get; set; } = new List<AddressAudit>();
 
