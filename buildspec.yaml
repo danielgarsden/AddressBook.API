@@ -27,4 +27,4 @@ artifacts:
   files:
     - AddressBook.API/bin/Release/net6.0/publish/*
   name: addressbook.api/builds/$CODEBUILD_BUILD_NUMBER
-  base-directory: publish
+  base-directory: AddressBook.API/bin/Release/net6.0/publish
