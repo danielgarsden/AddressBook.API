@@ -25,6 +25,6 @@ phases:
       
 artifacts:
   files:
-    - */*
+    - '*/*'
   name: addressbook.api/builds/$CODEBUILD_BUILD_NUMBER
   base-directory: AddressBook.API/bin/Release/net6.0/publish
