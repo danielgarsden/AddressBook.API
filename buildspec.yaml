@@ -22,9 +22,10 @@ phases:
       - echo Publish started on `date`
       # https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/dotnet-linux-platform-bundle-app.html
       - dotnet publish -c Release AddressBook.API/AddressBook.API.csproj
+      - echo $CODEBUILD_SRC_DIR
       
 artifacts:
   files:
-    - '*/*'
+    - '**/*'
   name: addressbook.api/builds/$CODEBUILD_BUILD_NUMBER
   base-directory: AddressBook.API/bin/Release/net6.0/publish
